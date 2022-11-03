@@ -1,0 +1,255 @@
+﻿@using WebServer.Data.Models
+@using WebServer.Data.Services
+
+@inject BoardService BoardService
+   
+    <div class="card border-dark mb-3" style="max-width: 540px;">
+        <div class="row g-0">
+            <div class="col-md-4">
+                @if (_Npc.NpcId == 1)
+                {
+                    <img class="img-fluid rounded-start" src="https://search.pstatic.net/common/?src=http%3A%2F%2Fcafefiles.naver.net%2FMjAyMDA3MDJfMjMz%2FMDAxNTkzNjczOTczNjUy.d3uScphHDnKluUNRj6fB6Txo6FfDBVVm6jcDdtHuh18g.pYkZl9_PEQReZXAFsn8Ja5ZOF-rB8HqAhJrSL-tlyscg.JPEG%2F1.1haejunrealness_66640729_163390341379856_7977310759926789203_n.jpg&type=sc960_832" />
+                }
+                else if (_Npc.NpcId == 2)
+                {
+                    <img class="img-fluid rounded-start" src="https://qn.vhiphop.com/wp-content/thumbnails/19329.jpg" />
+                }
+                else if (_Npc.NpcId == 3)
+                {
+                    <img class="img-fluid rounded-start" src="https://i.mydramalist.com/XBojw_5f.jpg" />
+                }
+                else if (_Npc.NpcId == 4)
+                {
+                    <img class="img-fluid rounded-start" src="https://cdn.imweb.me/thumbnail/20200301/c4a1b66aedda2.jpeg" />
+                }
+                else if (_Npc.NpcId == 5)
+                {
+                    <img class="img-fluid rounded-start" src="https://ygx.co.kr/product/data/item/1658822818/1658822818_l1.jpg" />
+                }
+                else if (_Npc.NpcId == 7)
+                {
+                    <img class="img-fluid rounded-start" src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMjA4MjZfMjU5%2FMDAxNjYxNDkwMDMyNTUy.sTGt511l-9fCyTuq_yh5kFMKKZVrFPdwdTcVpXkzzCsg.xlg2fKUFSX3wqygu4LUCNk_JJH4oTrx-BchSguMcq0cg.JPEG.iamhys94%2F1661395395113.jpg&type=sc960_832" />
+                }
+                else if (_Npc.NpcId == 9)
+                {
+                    <img class="img-fluid rounded-start" src="http://cdn.ggilbo.com/news/photo/202111/882269_712105_720.jpg" />
+                }
+                else if (_Npc.NpcId == 10)
+                {
+                    <img class="img-fluid rounded-start" src="https://search.pstatic.net/sunny/?src=https%3A%2F%2Fimg.theqoo.net%2Fimg%2FCRaeP.jpg&type=sc960_832" />
+                }
+                else if (_Npc.NpcId == 11)
+                {
+                    <img class="img-fluid rounded-start" src="https://image.kpopmap.com/2022/06/kdancer-introduction_CocaNButter-Rihey.jpg" />
+                }
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title"><strong>@_Npc.NpcName</strong></h5>
+                    <p class="card-text">소속 : @_Npc.NpcPlace</p>
+                    <p class="card-text">
+                        <small class="text-muted">
+                            @if (_Npc.NpcId == 1)
+                            {
+
+                                <h6><em>경력/이력/대표작</em></h6>
+
+                                <ul>
+                                    <li>
+                                        -EVERGLOW- 제작 참여
+                                    </li>
+                                    <li>
+                                        영화 &lt;신의 딸은 춤을 춘다&gt; 주연
+                                    </li>
+                                    <li>
+                                        영화 &lt;신의 아이들은 연기가 어렵다&gt;
+                                        주연
+                                    </li>
+                                    <li>
+                                        영화 &lt;Butch up!&gt;
+                                        주연
+                                    </li>
+                                    <li>
+                                        영화 &lt;공작새&gt;
+                                        출연
+                                    </li>
+                                    <li>-문체부 컨텐츠 [오늘은 집에서 춥니다] 출연</li>
+                                </ul>
+                            }
+                            else if (_Npc.NpcId == 2)
+                            {
+                                <h6><em>경력/이력/대표작</em></h6>
+
+                                <ul>
+                                    <li>
+                                        -1million dance studio 대표 강사
+                                    </li>
+                                    <li>
+                                        문별 &lt;LUNATIC&gt;
+                                        M/V출연
+                                    </li>
+                                    <li>
+                                        Sprite,트래비 등 다수 인스타그램 게시물 광고
+                                    </li>
+                                </ul>
+                            }
+                            else if (_Npc.NpcId == 3)
+                            {
+                                <h6><em>경력/이력/대표작</em></h6>
+
+                                <ul>
+                                    <li>
+                                        경희대학교 글로벌 미래교육원 실용무용과 교수
+                                    </li>
+                                    <li>
+                                        KCA한국예술원 실용무용과_힙합 교수
+                                    </li>
+                                    <li>
+                                        4 DA NEXT LEVEL Vol.2’ 인터네셔널 배틀에서 힙합부분 우승
+                                    </li>
+                                    <li>
+                                        &lt;댄싱9&gt; 출연
+                                    </li>
+                                    <li>
+                                        &lt;힛더스테이지&gt; 출연
+                                    </li>
+                                    <li>&lt;마이리틀텔레비전&gt; 출연</li>
+                                    <li>&lt;나혼자산다&gt; 출연</li>
+                                    <li>&lt;런닝맨&gt; 출연</li>
+                                </ul>
+                            }
+                            else if (_Npc.NpcId == 4)
+                            {
+                                <h6><em>경력/이력/대표작</em></h6>
+
+                                <ul>
+                                    <li>
+                                        LG 시도song： (주) LG 기업 PR 광고 출연
+                                    </li>
+                                    <li>
+                                        JB Dance studio 메인 강사
+                                    </li>
+                                    <li>
+                                        서울공연예술고등학교 출강
+                                    </li>
+                                </ul>
+                            }
+                            else if (_Npc.NpcId == 5)
+                            {
+                                <h6><em>경력/이력/대표작</em></h6>
+
+                                <ul>
+                                    <li>
+                                        블랙핑크 &lt;Shut down&gt;, &lt;Pink Venom&gt; 안무 제작 참여
+                                    </li>
+                                    <li>
+                                        틱톡 광고 with 송민호
+                                    </li>
+                                    <li>
+                                        ITZY &lt;Wannabe&gt;, &lt;MAFIA In the morning&gt; 안무 제작 참여
+                                    </li>
+                                    <li>
+                                        청하 &lt;Bicycle&gt; 안무 제작 참여
+                                    </li>
+                                    <li>
+                                        &lt;스트릿 우먼 파이터&gt; 출연
+                                    </li>
+
+                                </ul>
+                            }
+                            else if (_Npc.NpcId == 7)
+                            {
+                                <h6><em>경력/이력/대표작</em></h6>
+
+                                <ul>
+                                    <li>
+                                        &lt;스트릿 맨 파이터&gt; 출연
+                                    </li>
+                                    <li>
+                                        &lt;무빈업 댄스 스튜디오&gt; 운영
+                                    </li>
+                                    <li>
+                                        국내 외 대회 개인 우승 50회 이상
+                                    </li>
+                                </ul>
+                            }
+                            else if (_Npc.NpcId == 9)
+                            {
+                                <h6><em>경력/이력/대표작</em></h6>
+
+                                <ul>
+                                    <li>
+                                        청하 &lt;Stay tonight&gt;, &lt;Dream of you&gt; 안무 제작 참여
+                                    </li>
+                                    <li>
+                                        권은비 &lt;Glitch&gt; 안무 제작 참여
+                                    </li>
+                                    <li>
+                                        &lt;Fly to the dance&gt; (tv 프로그램) 출연
+                                    </li>
+                                </ul>
+                            }
+                            else if (_Npc.NpcId == 10)
+                            {
+                                <h6><em>경력/이력/대표작</em></h6>
+
+                                <ul>
+                                    <li>
+                                        뉴진스 &lt;Attention&gt;, &lt;Hype Boy&gt;, &lt;Cookie&gt; 안무 제작
+                                    </li>
+                                    <li>
+                                        &lt;스트릿 맨 파이터&gt; 출연
+                                    </li>
+                                    <li>
+                                        샤이니 키 &lt;헬륨&gt;
+                                        안무 제작
+                                        주연
+                                    </li>
+                                </ul>
+                            }
+                            else if (_Npc.NpcId == 11)
+                            {
+                                <h6><em>경력/이력/대표작</em></h6>
+
+                                <ul>
+                                    <li>
+                                        KCA한국예술원 실용무용과_힙합 교수
+                                    </li>
+                                    <li>
+                                        한양대학교 미래인재교육원 실용무용과_힙합 교수
+                                    </li>
+                                    <li>
+                                        퀸와사비 - &lt;신토bOOty&gt;
+                                        안무제작 참여
+                                    </li>
+                                    <li>
+                                        에일리,효연,전지우 - &lt;GG&gt;
+                                        안무제작 참여
+                                    </li>
+                                    <li>
+                                        WSG 워너비 - &lt;어마어마해&gt;
+                                        안무제작 참여
+                                    </li>
+                                    <li>&lt;스트릿 우먼 파이터&gt; 출연</li>
+                                </ul>
+                            }
+                        </small>
+                    </p>
+                    <p class=" w3-text-gray">
+                        <h6>* @_Npc.NpcName 선생님에 대한 이용자들의 평가를 보시려면 <a class="btn btn-outline-secondary" href="/Teacher/@_Npc.NpcId" role="button">더보기</a> 를 눌러 주세요</h6>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    
+    </div>
+
+
+
+
+    @code {
+        [Parameter]
+        public Npc _Npc { get; set; }
+
+    }

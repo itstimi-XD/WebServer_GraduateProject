@@ -1,0 +1,179 @@
+﻿@page "/Teacher/{id}"
+
+@using WebServer.Data.Models
+@using WebServer.Data.Services
+
+@inject BoardService BoardService
+
+
+<a class="mr-1 mb-3" href="/@_npc.NpcMajor">BACK</a>
+
+<div class="mt-3 mb-4">
+    <TeacherInfo _Npc="_npc"></TeacherInfo>
+</div>
+
+
+
+<h4 class="pb-3 d-flex align-items-center">
+    <strong class="p-2 flex-grow-1">평가 게시판</strong>
+    <button class="btn btn-primary" @onclick="AddScript">
+        <span class="oi oi-plus"> 글쓰기</span>
+    </button>
+</h4>
+<ul>
+    <li>선생님 강의에 대한 평균 총점 : @string.Format("{0:0.0}", _npc.Score) / 5 점</li>
+</ul>
+
+
+@if (_showPopUp)
+{
+    <div class="modal" style="display:block" role="dialog">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="ModalToggleLabel">글쓰기</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" @onclick="ClosePopUp">🗙</button>
+                </div>
+                <div class="modal-body">
+                    <EditForm Model="_script">
+                        <h5>별점</h5>
+                        <label>
+
+                            <InputSelect @bind-Value="Score">
+                                <option value="1">1 점</option>
+                                @for (int rate = 2; rate <= 5; rate++)
+                                    {
+                                    <option value="@rate.ToString()">@rate 점</option>
+                                    }
+                            </InputSelect>
+
+                        </label>
+
+                        <h5>강의평</h5>
+                        <label>
+                            <InputTextArea class="form-control" rows="10" style="width:466px" @bind-Value="_script.ScriptText"></InputTextArea>
+                        </label>
+                    </EditForm>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" @onclick="ShowAlert">글 저장</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @if (_showAlert)
+    {
+        <div class="modal" style="display: block; z-index: 10000" role="dialog">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="ModalToggleLabel2">확인</h5>
+                    </div>
+                    <div class="modal-body">
+                        한번 저장하면 수정할 수 없습니다. 정말 저장하시겠습니까?
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" @onclick="CloseAlert">돌아가기</button>
+                        <button class="btn btn-primary" @onclick="SaveScript">글 저장</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+}
+
+
+@if (_scripts == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table align-middle">
+        <thead>
+            <tr scope="col">
+                <th class="col-6" style="vertical-align: middle;">강의평</th>
+                <th class="col-2">별점</th>
+                <th class="col-2">작성 일자</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var script in _scripts)
+            {
+                <tr style="vertical-align: middle;">
+                    <td class="col-6" style="width:736px; table-layout:fixed">@script.ScriptText</td>
+                    <td class="col-2">@script.Score</td>
+                    <td class="col-2">@script.Date.ToString()</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+
+    [Parameter]
+    public string id { get; set; }
+    public Npc _npc { get; set; }
+
+    List<Script> _scripts;
+    Script _script;
+    bool _showPopUp;
+    bool _showAlert;
+    string Score { get; set; } = "1";
+
+    protected override async Task OnInitializedAsync()
+    {
+        int npcId = Int32.Parse(id);
+        _npc = await BoardService.GetNpcByIdAsync(npcId);
+        _scripts = await BoardService.GetScriptsByNpcAsync(_npc);
+    }
+
+    void ShowAlert()
+    {
+        _showAlert = true;
+    }
+
+    void CloseAlert()
+    {
+        _showAlert = false;
+    }
+
+    void AddScript()
+    {
+        _showPopUp = true;
+        _script = new Script()
+        {
+            ScriptId = 0,
+            OwnerId = _npc.NpcId,
+            Owner = _npc
+        };
+    }
+
+    void ClosePopUp()
+    {
+        _showPopUp = false;
+    }
+
+    async Task SaveScript()
+    {
+        if (_script.ScriptId == 0)
+        {
+            _script.Score = Int32.Parse(Score);
+            _script.Date = DateTime.Now;
+            var result = BoardService.AddScript(_script);
+            var isError = BoardService.UpdateNpcScore(_script);
+        }
+        else
+        {
+            Console.WriteLine("저장될 수 없는 평가 입니다(중복)");
+
+        }
+        _showPopUp = false;
+        _showAlert = false;
+        _scripts = await BoardService.GetScriptsByNpcAsync(_npc);
+        _npc = await BoardService.GetNpcByIdAsync(_npc.NpcId);
+    }
+}

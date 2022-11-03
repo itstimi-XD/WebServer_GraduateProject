@@ -1,0 +1,4 @@
+repository "Meta_Studio_WebServer@MetaverseCommity_GraduateProject@cloud"
+  path "/"
+    br "/main"
+    co "/main"
