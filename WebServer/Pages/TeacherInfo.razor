@@ -2,10 +2,8 @@
 @using WebServer.Data.Services
 
 @inject BoardService BoardService
-   
-    <div class="card border-dark mb-3" style="max-width: 540px;">
-        <div class="row g-0">
-            <div class="col-md-4">
+    
+    <div class="card flex-row">
                 @if (_Npc.NpcId == 1)
                 {
                     <img class="img-fluid rounded-start" src="https://search.pstatic.net/common/?src=http%3A%2F%2Fcafefiles.naver.net%2FMjAyMDA3MDJfMjMz%2FMDAxNTkzNjczOTczNjUy.d3uScphHDnKluUNRj6fB6Txo6FfDBVVm6jcDdtHuh18g.pYkZl9_PEQReZXAFsn8Ja5ZOF-rB8HqAhJrSL-tlyscg.JPEG%2F1.1haejunrealness_66640729_163390341379856_7977310759926789203_n.jpg&type=sc960_832" />
@@ -42,13 +40,12 @@
                 {
                     <img class="img-fluid rounded-start" src="https://image.kpopmap.com/2022/06/kdancer-introduction_CocaNButter-Rihey.jpg" />
                 }
-            </div>
-            <div class="col-md-8">
-                <div class="card-body">
-                    <h5 class="card-title"><strong>@_Npc.NpcName</strong></h5>
-                    <p class="card-text">소속 : @_Npc.NpcPlace</p>
-                    <p class="card-text">
-                        <small class="text-muted">
+    
+        <div class="card-body">
+            <h5 class="card-title"><strong>@_Npc.NpcName</strong></h5>
+                <p class="card-text">소속 : @_Npc.NpcPlace</p>
+                <p class="card-text">
+                <small class="text-muted">
                             @if (_Npc.NpcId == 1)
                             {
 
@@ -238,11 +235,7 @@
                     <p class=" w3-text-gray">
                         <h6>* @_Npc.NpcName 선생님에 대한 이용자들의 평가를 보시려면 <a class="btn btn-outline-secondary" href="/Teacher/@_Npc.NpcId" role="button">더보기</a> 를 눌러 주세요</h6>
                     </p>
-                </div>
-            </div>
         </div>
-
-    
     </div>
 
 

@@ -92,12 +92,12 @@
 <h5 class="border-bottom border-white text-secondary pb-3">안무가 소개</h5>
 <br />
 <div class="container">
-    <div class="row">
+    <div class="card-columns">
         @foreach (var npc in _npcs)
         {
-            <div class="row justify-content-end">
+            <div class="align-self-center">
                 <TeacherInfo _Npc="npc"></TeacherInfo>
-                <h5 class="border-bottom border-white "></h5>
+
                 <br />
             </div>
         }
