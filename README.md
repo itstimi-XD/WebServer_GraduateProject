@@ -1,6 +1,5 @@
 <div align=center>
-	
-	<img src="https://capsule-render.vercel.ap/api?type=Soft&color=auto&height=50&section=header&text=WebServer_GraduateProject%20render&fontSize=30" />
+	<img src="https://capsule-render.vercel.app/api?type=waving&color=auto&height=100&section=header&text=WebServer_GraduateProject%20Github!&fontSize=30" />	
 </div>
 <div align=center>
 	<h3>📚 Tech Stack 📚</h3>
