@@ -89,21 +89,31 @@
 
 
 
-<h5 class="border-bottom border-white text-secondary pb-3">안무가 소개</h5>
-<br />
-<div class="container">
-    <div class="card-columns">
-        @foreach (var npc in _npcs)
-        {
-            <div class="align-self-center">
-                <TeacherInfo _Npc="npc"></TeacherInfo>
+    <h5 class="border-bottom border-white text-secondary pb-3" style="text-align:center">안무가 소개</h5>
+    <br />
+    <div class="container">
+        <div class="card-columns">
 
-                <br />
-            </div>
-        }
+            @foreach (var npc in _npcs)
+            {
+                <div class="card bg-transparent border-0">
+                    <div class="card-body">
+                        <div class="align-self-center">
+                            <TeacherInfo _Npc="npc"></TeacherInfo>
 
+                            <br />
+
+                        </div>
+                        <p class=" w3-text-gray">
+                            <h6>* @npc.NpcName 선생님에 대한 이용자들의 평가를 보시려면 <a class="btn btn-outline-secondary" href="/Teacher/@npc.NpcId" role="button">더보기</a> 를 눌러 주세요</h6>
+                        </p>
+                    </div>
+                </div>
+            }
+
+        </div>
+                
     </div>
-</div>
 </html>
 
 
